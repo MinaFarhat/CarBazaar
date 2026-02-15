@@ -1,5 +1,7 @@
-import 'package:car/const/global.dart';
-import 'package:car/const/save.dart';
+// ignore_for_file: avoid_print
+
+import 'package:carbazaar/const/global.dart';
+import 'package:carbazaar/const/save.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Shp {

@@ -1,9 +1,7 @@
-import 'package:car/View/homescreen.dart';
-import 'package:car/View/notification.dart';
-import 'package:car/View/settingscreen.dart';
+import 'package:carbazaar/View/homescreen.dart';
+import 'package:carbazaar/View/notification.dart';
+import 'package:carbazaar/View/settingscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 import '../const/global.dart';
 
@@ -15,14 +13,14 @@ class Mynavbar extends StatefulWidget {
 }
 
 class _MynavbarState extends State<Mynavbar> {
-  List screens = [Homescreen(), Notificationscreen(), Settingscreen()];
+  List screens = [const Homescreen(), const Notificationscreen(), const Settingscreen()];
   int curentindex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[curentindex],
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.home,

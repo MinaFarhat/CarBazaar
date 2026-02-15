@@ -1,11 +1,4 @@
-// To parse this JSON data, do
-//
-//     final login = loginFromMap(jsonString);
-
-import 'package:meta/meta.dart';
 import 'dart:convert';
-
-
 class Costumer {
     Costumer({
         required this.id,

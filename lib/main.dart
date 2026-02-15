@@ -1,36 +1,27 @@
-import 'package:car/View/homescreen.dart';
-import 'package:car/View/of.dart';
-import 'package:car/View/splashscreen.dart';
-import 'package:car/View/stt.dart';
-import 'package:car/View/cars.dart';
-import 'package:car/View/cartype.dart';
-import 'package:car/View/mynavbar.dart';
-import 'package:car/View/addcar.dart';
-import 'package:car/const/shp.dart';
+// ignore_for_file: must_be_immutable
+
+import 'package:carbazaar/View/splashscreen.dart';
 import 'package:flutter/material.dart';
-import 'View/login.dart';
+
 void main() {
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
 
-  Map<int, Color> color =
-  {
-  50:Color.fromRGBO(253,96,1, .1),
-  100:Color.fromRGBO(253,96,1, .2),
-  200:Color.fromRGBO(253,96,1, .3),
-  300:Color.fromRGBO(253,96,1, .4),
-  400:Color.fromRGBO(253,96,1, .5),
-  500:Color.fromRGBO(253,96,1, .6),
-  600:Color.fromRGBO(253,96,1, .7),
-  700:Color.fromRGBO(253,96,1, .8),
-  800:Color.fromRGBO(253,96,1, .9),
-  900:Color.fromRGBO(253,96,1, 1),
+  Map<int, Color> color = {
+    50: const Color.fromRGBO(253, 96, 1, .1),
+    100: const Color.fromRGBO(253, 96, 1, .2),
+    200: const Color.fromRGBO(253, 96, 1, .3),
+    300: const Color.fromRGBO(253, 96, 1, .4),
+    400: const Color.fromRGBO(253, 96, 1, .5),
+    500: const Color.fromRGBO(253, 96, 1, .6),
+    600: const Color.fromRGBO(253, 96, 1, .7),
+    700: const Color.fromRGBO(253, 96, 1, .8),
+    800: const Color.fromRGBO(253, 96, 1, .9),
+    900: const Color.fromRGBO(253, 96, 1, 1),
   };
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +32,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: colorCustom,
       ),
-      home:Splashscreen(),
+      home: const Splashscreen(),
     );
   }
 }

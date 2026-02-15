@@ -1,14 +1,6 @@
-// To parse this JSON data, do
-//
-//     final filterResult = filterResultFromMap(jsonString);
-
-import 'package:meta/meta.dart';
 import 'dart:convert';
-
 List<FilterResult> filterResultFromMap(String str) => List<FilterResult>.from(json.decode(str).map((x) => FilterResult.fromMap(x)));
-
 String filterResultToMap(List<FilterResult> data) => json.encode(List<dynamic>.from(data.map((x) => x.toMap())));
-
 class FilterResult {
     FilterResult({
         required this.id,

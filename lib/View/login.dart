@@ -1,8 +1,8 @@
-import 'package:car/View/homescreen.dart';
-import 'package:car/View/mynavbar.dart';
-import 'package:car/api/api.dart';
-import 'package:car/const/global.dart';
-import 'package:car/const/shp.dart';
+// ignore_for_file: use_build_context_synchronously
+import 'package:carbazaar/View/mynavbar.dart';
+import 'package:carbazaar/api/api.dart';
+import 'package:carbazaar/const/global.dart';
+import 'package:carbazaar/const/shp.dart';
 import 'package:flutter/material.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
@@ -135,7 +135,7 @@ class _LoginState extends State<Login> {
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(8),
                                         color: Colors.grey.shade900),
-                                    child: Center(
+                                    child: const Center(
                                       child: Text(
                                         "Log in",
                                         style: TextStyle(
@@ -148,7 +148,7 @@ class _LoginState extends State<Login> {
                                     ),
                                   )
                                 : InkWell(
-                                    overlayColor: MaterialStateProperty.all(
+                                    overlayColor: WidgetStateProperty.all(
                                         Colors.transparent),
                                     onTap: () {
                                       if (formkey.currentState!.validate()) {
@@ -163,14 +163,14 @@ class _LoginState extends State<Login> {
                                                 .pushReplacement(
                                                     MaterialPageRoute(
                                                         builder: (context) {
-                                              return Mynavbar();
+                                              return const Mynavbar();
                                             }));
                                           } else {
                                             showTopSnackBar(
                                                 displayDuration:
-                                                    Duration(milliseconds: 500),
+                                                    const Duration(milliseconds: 500),
                                                 context,
-                                                CustomSnackBar.error(
+                                                const CustomSnackBar.error(
                                                     message:
                                                         "your information not true!"));
                                           }
@@ -185,7 +185,7 @@ class _LoginState extends State<Login> {
                                         borderRadius: BorderRadius.circular(3),
                                         color: Global.primary,
                                       ),
-                                      child: Center(
+                                      child: const Center(
                                         child: Text(
                                           "Log in",
                                           style: TextStyle(
@@ -201,7 +201,7 @@ class _LoginState extends State<Login> {
                             const Spacer(),
                             InkWell(
                               overlayColor:
-                                  MaterialStateProperty.all(Colors.transparent),
+                                  WidgetStateProperty.all(Colors.transparent),
                               onTap: () {
                                 setState(() {
                                   v = 1;
@@ -219,12 +219,12 @@ class _LoginState extends State<Login> {
                         )
                       : Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 40,
                             ),
                             InkWell(
                               overlayColor:
-                                  MaterialStateProperty.all(Colors.transparent),
+                                  WidgetStateProperty.all(Colors.transparent),
                               onTap: () {},
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.9,
@@ -239,17 +239,17 @@ class _LoginState extends State<Login> {
                                     Container(
                                       width: 35,
                                       height: 35,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           image: DecorationImage(
                                         image:
                                             AssetImage("assets/whatsapp.png"),
                                         fit: BoxFit.cover,
                                       )),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 15,
                                     ),
-                                    Text(
+                                    const Text(
                                       "Call Us Whatsapp",
                                       style: TextStyle(
                                         color: Colors.white,
@@ -266,7 +266,7 @@ class _LoginState extends State<Login> {
                             ),
                             InkWell(
                               overlayColor:
-                                  MaterialStateProperty.all(Colors.transparent),
+                                  WidgetStateProperty.all(Colors.transparent),
                               onTap: () {},
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.9,
@@ -275,7 +275,7 @@ class _LoginState extends State<Login> {
                                   borderRadius: BorderRadius.circular(8),
                                   color: Colors.grey.shade900,
                                 ),
-                                child: Row(
+                                child: const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Icon(
@@ -297,10 +297,10 @@ class _LoginState extends State<Login> {
                                 ),
                               ),
                             ),
-                            Spacer(),
+                            const Spacer(),
                             InkWell(
                               overlayColor:
-                                  MaterialStateProperty.all(Colors.transparent),
+                                  WidgetStateProperty.all(Colors.transparent),
                               onTap: () {
                                 setState(() {
                                   v = 0;

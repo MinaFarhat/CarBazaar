@@ -1,10 +1,8 @@
-import 'package:car/View/homescreen.dart';
-import 'package:car/View/listpost.dart';
-import 'package:car/api/api.dart';
-import 'package:car/const/global.dart';
+// ignore_for_file: avoid_print, prefer_interpolation_to_compose_strings, must_be_immutable
+import 'package:carbazaar/View/homescreen.dart';
+import 'package:carbazaar/api/api.dart';
+import 'package:carbazaar/const/global.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class Post extends StatefulWidget {
   String? imagep;
@@ -22,16 +20,16 @@ class Post extends StatefulWidget {
 }
 
 class _PostState extends State<Post> {
-  Homescreen d = Homescreen();
+  Homescreen d = const Homescreen();
   @override
   Widget build(BuildContext context) {
     print(Api.url + "/uploads/" + widget.imagep!);
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Row(
@@ -41,12 +39,12 @@ class _PostState extends State<Post> {
                 backgroundImage: NetworkImage(Api.url + "/uploads/" + widget.image!),
                 radius: 20,
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Text(
                 widget.name!,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   fontFamily: "OpenSans",
@@ -55,7 +53,7 @@ class _PostState extends State<Post> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Container(
@@ -68,12 +66,12 @@ class _PostState extends State<Post> {
                   fit: BoxFit.cover,
                 )),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Text(
             "DAILY RENT  ${widget.price} AED",
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w600,
               fontFamily: "OpenSans",
@@ -81,12 +79,12 @@ class _PostState extends State<Post> {
               color: Global.primary,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Text(
             widget.type!,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w600,
               fontFamily: "OpenSans",
@@ -94,12 +92,12 @@ class _PostState extends State<Post> {
               color: Colors.black,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Row(
             children: [
-              Text(
+              const Text(
                 "Year : ",
                 style: TextStyle(
                   fontSize: 16,
@@ -111,7 +109,7 @@ class _PostState extends State<Post> {
               ),
               Text(
                 widget.year!,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                   fontFamily: "OpenSans",
@@ -121,7 +119,7 @@ class _PostState extends State<Post> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           Row(
@@ -135,7 +133,7 @@ class _PostState extends State<Post> {
                     borderRadius: BorderRadius.circular(10),
                     color: Global.primary,
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -168,7 +166,7 @@ class _PostState extends State<Post> {
                     borderRadius: BorderRadius.circular(10),
                     color: Global.primary,
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

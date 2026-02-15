@@ -1,13 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 import 'dart:io';
-
-import 'package:car/Models/costumer.dart';
-import 'package:car/Models/filtter_result.dart';
-import 'package:car/const/save.dart';
-import 'package:car/const/shp.dart';
-import 'package:flutter/material.dart';
+import 'package:carbazaar/Models/filtter_result.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Api {
   static String url = "https://www.carrentalclub.ae";

@@ -1,13 +1,10 @@
+// ignore_for_file: empty_catches, deprecated_member_use, avoid_print
+
 import 'dart:async';
 import 'dart:io';
-import 'package:car/View/settingscreen.dart';
-import 'package:car/api/api.dart';
-import 'package:flutter/cupertino.dart';
+
+import 'package:carbazaar/api/api.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:im_stepper/main.dart';
-import 'package:im_stepper/stepper.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../const/global.dart';
@@ -59,7 +56,7 @@ class _SttState extends State<Stt> {
           });
         }
       },
-      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
@@ -69,7 +66,7 @@ class _SttState extends State<Stt> {
               children: [
                 Text(
                   language.toString(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 17,
                     fontFamily: "OpenSans",
                     fontFamilyFallback: ["Regular"],
@@ -77,7 +74,7 @@ class _SttState extends State<Stt> {
                   ),
                 ),
                 select.contains(index)
-                    ? Icon(
+                    ? const Icon(
                         Icons.done,
                         size: 18,
                         color: Global.primary,
@@ -85,13 +82,13 @@ class _SttState extends State<Stt> {
                     : Container(),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Divider(
               color: Colors.grey.shade700,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
           ],
@@ -123,7 +120,7 @@ class _SttState extends State<Stt> {
                   width: MediaQuery.of(context).size.width,
                   height: 150,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(10),
                       bottomRight: Radius.circular(10),
                     ),
@@ -133,12 +130,12 @@ class _SttState extends State<Stt> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 1,
                         blurRadius: 10,
-                        offset: Offset(0, 2),
+                        offset: const Offset(0, 2),
                       ),
                     ],
                   ),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                    padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                     child: Column(
                       children: [
                         Row(
@@ -176,7 +173,7 @@ class _SttState extends State<Stt> {
                                   });
                                 }
                               },
-                              child: Icon(
+                              child: const Icon(
                                 Icons.arrow_back_ios_new_rounded,
                                 color: Colors.black,
                                 size: 22,
@@ -185,7 +182,7 @@ class _SttState extends State<Stt> {
                             Container(
                               width: 300,
                               height: 45,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   image: DecorationImage(
                                 image: AssetImage("assets/logo.png"),
                                 fit: BoxFit.cover,
@@ -195,7 +192,7 @@ class _SttState extends State<Stt> {
                               overlayColor:
                                   MaterialStateProperty.all(Colors.transparent),
                               onTap: () {},
-                              child: Icon(
+                              child: const Icon(
                                 Icons.arrow_back_ios_new_rounded,
                                 color: Colors.white,
                                 size: 22,
@@ -203,7 +200,7 @@ class _SttState extends State<Stt> {
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         Row(
@@ -217,7 +214,7 @@ class _SttState extends State<Stt> {
                                   color: c1 == true
                                       ? Global.primary
                                       : Colors.black),
-                              child: Center(
+                              child: const Center(
                                 child: Icon(
                                   Icons.co_present_outlined,
                                   color: Colors.white,
@@ -243,7 +240,7 @@ class _SttState extends State<Stt> {
                                   color: c2 == true
                                       ? Global.primary
                                       : Colors.black),
-                              child: Center(
+                              child: const Center(
                                 child: Icon(
                                   Icons.person,
                                   color: Colors.white,
@@ -269,7 +266,7 @@ class _SttState extends State<Stt> {
                                   color: c3 == true
                                       ? Global.primary
                                       : Colors.black),
-                              child: Center(
+                              child: const Center(
                                 child: Icon(
                                   Icons.local_phone_sharp,
                                   color: Colors.white,
@@ -321,7 +318,7 @@ class _SttState extends State<Stt> {
                                   color: c5 == true
                                       ? Global.primary
                                       : Colors.black),
-                              child: Center(
+                              child: const Center(
                                 child: Icon(
                                   Icons.language,
                                   color: Colors.white,
@@ -341,12 +338,12 @@ class _SttState extends State<Stt> {
                       _curentstep == 0
                           ? Form(
                               key: formkey,
-                              child: Container(
+                              child: SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.3,
                                 child: Column(
                                   children: [
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 30,
                                     ),
                                     Padding(
@@ -447,44 +444,42 @@ class _SttState extends State<Stt> {
                             )
                           : Container(),
                       _curentstep == 1
-                          ? Container(
-                              child: Center(
-                                child: Stack(
+                          ? Center(
+                            child: Stack(
+                              children: [
+                                Column(
                                   children: [
-                                    Column(
-                                      children: [
-                                        SizedBox(
-                                          height: MediaQuery.of(context)
-                                                  .size
-                                                  .height *
-                                              0.12,
-                                        ),
-                                        Text(
-                                          "Add Photos",
-                                          style: TextStyle(
-                                              fontSize: 23,
-                                              fontWeight: FontWeight.w600,
-                                              fontFamily: "OpenSans",
-                                              fontFamilyFallback: ["Regular"],
-                                              color: Colors.black),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        imageprofile(),
-                                      ],
+                                    SizedBox(
+                                      height: MediaQuery.of(context)
+                                              .size
+                                              .height *
+                                          0.12,
                                     ),
+                                    const Text(
+                                      "Add Photos",
+                                      style: TextStyle(
+                                          fontSize: 23,
+                                          fontWeight: FontWeight.w600,
+                                          fontFamily: "OpenSans",
+                                          fontFamilyFallback: ["Regular"],
+                                          color: Colors.black),
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    imageprofile(),
                                   ],
                                 ),
-                              ),
-                            )
+                              ],
+                            ),
+                          )
                           : Container(),
                       _curentstep == 2
                           ? Form(
                               key: formkey1,
                               child: Column(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 30,
                                   ),
                                   Padding(
@@ -535,7 +530,7 @@ class _SttState extends State<Stt> {
                               key: formkey2,
                               child: Column(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 30,
                                   ),
                                   Padding(
@@ -587,10 +582,10 @@ class _SttState extends State<Stt> {
                                 children: [
                                   Column(
                                     children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 30,
                                       ),
-                                      Container(
+                                      SizedBox(
                                         height:
                                             MediaQuery.of(context).size.height *
                                                 0.9,
@@ -628,23 +623,23 @@ class _SttState extends State<Stt> {
                                   b = true;
 
                                   Api.sendperson(
-                                      (firstname.text +' '+ lastname.text),
+                                      ('${firstname.text} ${lastname.text}'),
                                       phonenumber.text,
                                       sss().toString(),
                                      _imagefile!,
                                   );
-                                  Timer(Duration(milliseconds: 800), () {
+                                  Timer(const Duration(milliseconds: 800), () {
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (_) => Mynavbar()));
+                                            builder: (_) => const Mynavbar()));
                                   });
                                 } else {
                                   showTopSnackBar(
                                       displayDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       context,
-                                      CustomSnackBar.error(
+                                      const CustomSnackBar.error(
                                           message:
                                               "Choose at least one language"));
                                 }
@@ -656,7 +651,7 @@ class _SttState extends State<Stt> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(13),
                                   color: Global.primary),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
                                   "SAVE",
                                   style: TextStyle(
@@ -693,9 +688,9 @@ class _SttState extends State<Stt> {
                                 } else {
                                   showTopSnackBar(
                                       displayDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       context,
-                                      CustomSnackBar.error(
+                                      const CustomSnackBar.error(
                                           message: "Choose Profile Photo"));
                                 }
                               } else if (_curentstep == 2) {
@@ -730,7 +725,7 @@ class _SttState extends State<Stt> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(13),
                                   color: Global.primary),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
                                   "Next",
                                   style: TextStyle(
@@ -749,9 +744,10 @@ class _SttState extends State<Stt> {
             ),
             b == true
                 ? Container(
+                    color: Colors.black.withOpacity(0.9),
                     child: Stack(
                       children: [
-                        Center(
+                        const Center(
                           child: Text(
                             "Saving Your adding Information",
                             style: TextStyle(
@@ -773,7 +769,7 @@ class _SttState extends State<Stt> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(28),
                                     color: Global.primary),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.co_present_outlined,
                                     color: Colors.white,
@@ -792,7 +788,7 @@ class _SttState extends State<Stt> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(28),
                                     color: Global.primary),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.person,
                                     color: Colors.white,
@@ -811,7 +807,7 @@ class _SttState extends State<Stt> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(28),
                                     color: Global.primary),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.local_phone_sharp,
                                     color: Colors.white,
@@ -849,7 +845,7 @@ class _SttState extends State<Stt> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(28),
                                     color: Global.primary),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.language,
                                     color: Colors.white,
@@ -860,7 +856,6 @@ class _SttState extends State<Stt> {
                             )),
                       ],
                     ),
-                    color: Colors.black.withOpacity(0.9),
                   )
                 : Container(),
           ],
@@ -881,13 +876,13 @@ class _SttState extends State<Stt> {
     return Container(
       height: 100,
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 20,
       ),
       child: Column(
         children: [
-          Text(
+          const Text(
             "Choose a Photot",
             style: TextStyle(
                 fontSize: 16,
@@ -896,7 +891,7 @@ class _SttState extends State<Stt> {
                 fontFamilyFallback: ["Regular"],
                 color: Colors.black),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           Row(
@@ -908,7 +903,7 @@ class _SttState extends State<Stt> {
                   takephoto(ImageSource.camera);
                   Navigator.of(context).pop();
                 },
-                child: Column(
+                child: const Column(
                   children: [
                     Icon(
                       Icons.camera,
@@ -934,7 +929,7 @@ class _SttState extends State<Stt> {
                  takephoto(ImageSource.gallery);
                   Navigator.of(context).pop();
                 },
-                child: Column(
+                child: const Column(
                   children: [
                     Icon(
                       Icons.image,
@@ -977,14 +972,14 @@ class _SttState extends State<Stt> {
             child: CircleAvatar(
               radius: 65,
               backgroundImage: _imagefile == null
-                  ? AssetImage("assets/user.png")
+                  ? const AssetImage("assets/user.png")
                   : FileImage(File(_imagefile!.path)) as ImageProvider,
             ),
           ),
-          Positioned(
+          const Positioned(
             bottom: 15,
             right: 5,
-            child: Container(
+            child: SizedBox(
               width: 20,
               height: 20,
               child: Icon(

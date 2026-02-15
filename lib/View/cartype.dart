@@ -1,8 +1,7 @@
-import 'package:car/View/homescreen.dart';
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: must_be_immutable
+
+import 'package:carbazaar/View/homescreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class Cartype extends StatefulWidget {
   String ? type;
@@ -22,10 +21,10 @@ class _CartypeState extends State<Cartype> {
       child: Scaffold(
         body: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height*0.22,
               child: Column(
                 children: [
@@ -37,7 +36,7 @@ class _CartypeState extends State<Cartype> {
                     //crossAxisAlignment: CrossAxisAlignment.start,
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(
+                      const InkWell(
                         child: Text(
                           "NEXT",
                           style: TextStyle(
@@ -50,7 +49,7 @@ class _CartypeState extends State<Cartype> {
                       Container(
                         width: MediaQuery.of(context).size.width * 0.75,
                         height: MediaQuery.of(context).size.height * 0.09,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                             // color: Colors.red,
                             image: DecorationImage(
                           image: AssetImage("assets/logo.png"),
@@ -60,10 +59,10 @@ class _CartypeState extends State<Cartype> {
                       InkWell(
                         onTap: (){
                           Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                            return Homescreen();
+                            return const Homescreen();
                           }));
                         },
-                        child: Text(
+                        child: const Text(
                           "NEXT",
                           style: TextStyle(
                             color: Colors.black,
@@ -74,7 +73,7 @@ class _CartypeState extends State<Cartype> {
                       ),
                     ],
                   ),
-                  Center(
+                  const Center(
                     child: Text(
                       "Welcome to CRC",
                       style: TextStyle(
@@ -84,7 +83,7 @@ class _CartypeState extends State<Cartype> {
                       ),
                     ),
                   ),
-                  Center(
+                  const Center(
                     child: Text(
                       "Please Select The Car Brand",
                       style: TextStyle(
@@ -96,15 +95,15 @@ class _CartypeState extends State<Cartype> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Container(
+            SizedBox(
               width: MediaQuery.of(context).size.width * 0.9,
               height: 45,
               child: TextFormField(
                 cursorHeight: 25,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
@@ -114,18 +113,18 @@ class _CartypeState extends State<Cartype> {
                     fillColor: Colors.grey.shade200,
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.search_rounded,
                       color: Colors.black,
                     ),
                     hintText: "Search here",
-                    hintStyle: TextStyle(
+                    hintStyle: const TextStyle(
                         color: Color.fromRGBO(0, 0, 0, 1),
                         fontSize: 12,
                         fontWeight: FontWeight.w500)),
@@ -136,7 +135,7 @@ class _CartypeState extends State<Cartype> {
             ),
            
              SingleChildScrollView(
-               child: Container(
+               child: SizedBox(
                 //color: Colors.red,
                 height: MediaQuery.of(context).size.height *0.72,
                 child: ListView.builder(
@@ -145,7 +144,7 @@ class _CartypeState extends State<Cartype> {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 35),
                       child: InkWell(
-                        overlayColor: MaterialStateProperty.all(Colors.transparent),
+                        overlayColor: WidgetStateProperty.all(Colors.transparent),
                         onTap: (){
                           setState(() {
                             curentindextype=index;
@@ -153,7 +152,7 @@ class _CartypeState extends State<Cartype> {
                         },
                         child: Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 35,
                             ),
                             Row(
@@ -161,7 +160,7 @@ class _CartypeState extends State<Cartype> {
                               children: [
                                 Text(
                                   types[index],
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w600,
                                     fontFamily: "OpenSans",

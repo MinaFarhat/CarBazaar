@@ -1,12 +1,11 @@
+// ignore_for_file: empty_catches, deprecated_member_use
+
 import 'dart:async';
 import 'dart:io';
 
-import 'package:car/View/mynavbar.dart';
-import 'package:car/View/of.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:carbazaar/View/mynavbar.dart';
+import 'package:carbazaar/View/of.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
@@ -21,10 +20,9 @@ class Addcar extends StatefulWidget {
 }
 
 class _AddcarState extends State<Addcar> {
-  TextEditingController _price = TextEditingController();
+  final TextEditingController _price = TextEditingController();
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
-  ScrollController _scrollController=ScrollController();
-  final dataKey = new GlobalKey();
+  final dataKey = GlobalKey();
   XFile? _imagefile;
   final ImagePicker _picker = ImagePicker();
   List names = ["URUS", "HURACAN", "AVENTADOR"];
@@ -109,11 +107,11 @@ class _AddcarState extends State<Addcar> {
                     uploadphotos.removeAt(index);
                   });
                 },
-                child: Icon(Icons.delete, color: Colors.black),
+                child: const Icon(Icons.delete, color: Colors.black),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           index == uploadphotos.length - 1
@@ -121,7 +119,7 @@ class _AddcarState extends State<Addcar> {
               : Divider(
                   color: Colors.grey.shade800,
                 ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
         ],
@@ -131,7 +129,7 @@ class _AddcarState extends State<Addcar> {
 
   Widget city(int index) {
     return InkWell(
-      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       onTap: () {
         setState(() {
           cityindex = index;
@@ -146,7 +144,7 @@ class _AddcarState extends State<Addcar> {
               width: MediaQuery.of(context).size.width * 0.9,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: Color(0x44eeeeee),
+                color: const Color(0x44eeeeee),
               ),
               child: Row(
                 children: [
@@ -154,7 +152,7 @@ class _AddcarState extends State<Addcar> {
                     width: MediaQuery.of(context).size.width * 0.3,
                     height: MediaQuery.of(context).size.width * 0.25,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(12),
                         bottomLeft: Radius.circular(12),
                       ),
@@ -164,21 +162,21 @@ class _AddcarState extends State<Addcar> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 25,
                   ),
                   Text(
                     cittes[index]["name"],
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.w600,
                       fontFamily: "OpenSans",
                       fontFamilyFallback: ["Regular"],
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   cityindex == index
-                      ? Icon(
+                      ? const Icon(
                           Icons.check,
                           color: Global.primary,
                           size: 17,
@@ -187,7 +185,7 @@ class _AddcarState extends State<Addcar> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             index == cittes.length - 1
@@ -208,7 +206,7 @@ class _AddcarState extends State<Addcar> {
           typeindex = index;
         });
       },
-      overlayColor: MaterialStateProperty.all(Colors.transparent),
+      overlayColor: WidgetStateProperty.all(Colors.transparent),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 17),
         child: Column(
@@ -225,21 +223,21 @@ class _AddcarState extends State<Addcar> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 25,
                 ),
                 Text(
                   photos[index]["name"],
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w600,
                     fontFamily: "OpenSans",
                     fontFamilyFallback: ["Regular"],
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 typeindex == index
-                    ? Icon(
+                    ? const Icon(
                         Icons.check,
                         color: Global.primary,
                         size: 17,
@@ -247,7 +245,7 @@ class _AddcarState extends State<Addcar> {
                     : Container(),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             index == photos.length - 1
@@ -255,7 +253,7 @@ class _AddcarState extends State<Addcar> {
                 : Divider(
                     color: Colors.grey.shade700,
                   ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             index == photos.length - 1
@@ -285,8 +283,8 @@ class _AddcarState extends State<Addcar> {
         body: Stack(
           children: [
             SingleChildScrollView(
-              physics: NeverScrollableScrollPhysics(),
-              child: Container(
+              physics: const NeverScrollableScrollPhysics(),
+              child: SizedBox(
                 height: MediaQuery.of(context).size.height,
                 child: Column(
                   children: [
@@ -294,7 +292,7 @@ class _AddcarState extends State<Addcar> {
                       width: MediaQuery.of(context).size.width,
                       height: 150,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                           bottomLeft: Radius.circular(10),
                           bottomRight: Radius.circular(10),
                         ),
@@ -304,13 +302,13 @@ class _AddcarState extends State<Addcar> {
                             color: Colors.grey.withOpacity(0.5),
                             spreadRadius: 1,
                             blurRadius: 10,
-                            offset: Offset(0, 2),
+                            offset: const Offset(0, 2),
                           ),
                         ],
                       ),
                       child: Padding(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                            const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
                         child: Column(
                           children: [
                             Row(
@@ -360,7 +358,7 @@ class _AddcarState extends State<Addcar> {
                                       });
                                     }
                                   },
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.arrow_back_ios_new_rounded,
                                     color: Colors.black,
                                     size: 22,
@@ -369,7 +367,7 @@ class _AddcarState extends State<Addcar> {
                                 Container(
                                   width: 300,
                                   height: 45,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       image: DecorationImage(
                                     image: AssetImage("assets/logo.png"),
                                     fit: BoxFit.cover,
@@ -379,7 +377,7 @@ class _AddcarState extends State<Addcar> {
                                   overlayColor: MaterialStateProperty.all(
                                       Colors.transparent),
                                   onTap: () {},
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.arrow_back_ios_new_rounded,
                                     color: Colors.white,
                                     size: 22,
@@ -387,7 +385,7 @@ class _AddcarState extends State<Addcar> {
                                 )
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 35,
                             ),
                             Row(
@@ -402,7 +400,7 @@ class _AddcarState extends State<Addcar> {
                                         ? Global.primary
                                         : Colors.black,
                                   ),
-                                  child: Center(
+                                  child: const Center(
                                     child: Icon(
                                       Icons.sell,
                                       color: Colors.white,
@@ -429,7 +427,7 @@ class _AddcarState extends State<Addcar> {
                                       color: c2 == true
                                           ? Global.primary
                                           : Colors.black),
-                                  child: Center(
+                                  child: const Center(
                                     child: Icon(
                                       Icons.time_to_leave_rounded,
                                       color: Colors.white,
@@ -455,7 +453,7 @@ class _AddcarState extends State<Addcar> {
                                       color: c3 == true
                                           ? Global.primary
                                           : Colors.black),
-                                  child: Center(
+                                  child: const Center(
                                     child: Icon(
                                       Icons.shopping_bag_rounded,
                                       color: Colors.white,
@@ -482,7 +480,7 @@ class _AddcarState extends State<Addcar> {
                                         ? Global.primary
                                         : Colors.black,
                                   ),
-                                  child: Center(
+                                  child: const Center(
                                     child: Icon(
                                       Icons.eco,
                                       color: Colors.white,
@@ -510,7 +508,7 @@ class _AddcarState extends State<Addcar> {
                                         ? Global.primary
                                         : Colors.black,
                                   ),
-                                  child: Center(
+                                  child: const Center(
                                     child: Icon(
                                       Icons.location_pin,
                                       color: Colors.white,
@@ -538,7 +536,7 @@ class _AddcarState extends State<Addcar> {
                                         ? Global.primary
                                         : Colors.black,
                                   ),
-                                  child: Center(
+                                  child: const Center(
                                     child: Icon(
                                       Icons.crop_original_rounded,
                                       color: Colors.white,
@@ -566,7 +564,7 @@ class _AddcarState extends State<Addcar> {
                                         ? Global.primary
                                         : Colors.black,
                                   ),
-                                  child: Center(
+                                  child: const Center(
                                     child: Icon(
                                       Icons.paid,
                                       color: Colors.white,
@@ -583,10 +581,10 @@ class _AddcarState extends State<Addcar> {
                     _curentstep == 0
                         ? Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
-                              Container(
+                              SizedBox(
                                 height: 50,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -602,21 +600,21 @@ class _AddcarState extends State<Addcar> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                           borderSide:
-                                              BorderSide(color: Colors.white)),
+                                              const BorderSide(color: Colors.white)),
                                       focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(12),
                                           borderSide:
-                                              BorderSide(color: Colors.white)),
+                                              const BorderSide(color: Colors.white)),
                                       filled: true,
-                                      fillColor: Color(0x44eeeeee),
+                                      fillColor: const Color(0x44eeeeee),
                                       hintText: "Search",
-                                      prefixIcon: Icon(
+                                      prefixIcon: const Icon(
                                         Icons.search_rounded,
                                         color: Colors.black,
                                         size: 20,
                                       ),
-                                      hintStyle: TextStyle(
+                                      hintStyle: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w600,
@@ -630,7 +628,7 @@ class _AddcarState extends State<Addcar> {
                                 height:
                                     MediaQuery.of(context).size.height * 0.035,
                               ),
-                              Container(
+                              SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.68,
                                 child: FadingScroller(
@@ -650,10 +648,10 @@ class _AddcarState extends State<Addcar> {
                     _curentstep == 1
                         ? Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
-                              Container(
+                              SizedBox(
                                 height: 50,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -669,21 +667,21 @@ class _AddcarState extends State<Addcar> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                           borderSide:
-                                              BorderSide(color: Colors.white)),
+                                              const BorderSide(color: Colors.white)),
                                       focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(12),
                                           borderSide:
-                                              BorderSide(color: Colors.white)),
+                                              const BorderSide(color: Colors.white)),
                                       filled: true,
-                                      fillColor: Color(0x44eeeeee),
+                                      fillColor: const Color(0x44eeeeee),
                                       hintText: "Search",
-                                      prefixIcon: Icon(
+                                      prefixIcon: const Icon(
                                         Icons.search_rounded,
                                         color: Colors.black,
                                         size: 20,
                                       ),
-                                      hintStyle: TextStyle(
+                                      hintStyle: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w600,
@@ -697,11 +695,11 @@ class _AddcarState extends State<Addcar> {
                                 height:
                                     MediaQuery.of(context).size.height * 0.035,
                               ),
-                              Container(
+                              SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.68,
                                 child: ListView.builder(
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemCount: 3,
                                   shrinkWrap: true,
                                   itemBuilder: (context, index) {
@@ -714,7 +712,7 @@ class _AddcarState extends State<Addcar> {
                                       overlayColor: MaterialStateProperty.all(
                                           Colors.transparent),
                                       child: Padding(
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 17),
                                         child: Column(
                                           children: [
@@ -725,7 +723,7 @@ class _AddcarState extends State<Addcar> {
                                               children: [
                                                 Text(
                                                   names[index],
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize: 17,
                                                     fontWeight: FontWeight.w600,
                                                     fontFamily: "OpenSans",
@@ -735,7 +733,7 @@ class _AddcarState extends State<Addcar> {
                                                   ),
                                                 ),
                                                 typeindex1 == index
-                                                    ? Icon(
+                                                    ? const Icon(
                                                         Icons.check,
                                                         color: Global.primary,
                                                         size: 17,
@@ -743,13 +741,13 @@ class _AddcarState extends State<Addcar> {
                                                     : Container()
                                               ],
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 20,
                                             ),
                                             Divider(
                                               color: Colors.grey.shade700,
                                             ),
-                                            SizedBox(
+                                            const SizedBox(
                                               height: 20,
                                             ),
                                           ],
@@ -765,10 +763,10 @@ class _AddcarState extends State<Addcar> {
                     _curentstep == 2
                         ? Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
-                              Container(
+                              SizedBox(
                                 height: 50,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -784,21 +782,21 @@ class _AddcarState extends State<Addcar> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                           borderSide:
-                                              BorderSide(color: Colors.white)),
+                                              const BorderSide(color: Colors.white)),
                                       focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(12),
                                           borderSide:
-                                              BorderSide(color: Colors.white)),
+                                              const BorderSide(color: Colors.white)),
                                       filled: true,
-                                      fillColor: Color(0x44eeeeee),
+                                      fillColor: const Color(0x44eeeeee),
                                       hintText: "Search",
-                                      prefixIcon: Icon(
+                                      prefixIcon: const Icon(
                                         Icons.search_rounded,
                                         color: Colors.black,
                                         size: 20,
                                       ),
-                                      hintStyle: TextStyle(
+                                      hintStyle: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w600,
@@ -812,7 +810,7 @@ class _AddcarState extends State<Addcar> {
                                 height:
                                     MediaQuery.of(context).size.height * 0.035,
                               ),
-                              Container(
+                              SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.68,
                                 child: FadingScroller(
@@ -830,7 +828,7 @@ class _AddcarState extends State<Addcar> {
                                         overlayColor: MaterialStateProperty.all(
                                             Colors.transparent),
                                         child: Padding(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 17),
                                           child: Column(
                                             children: [
@@ -841,7 +839,7 @@ class _AddcarState extends State<Addcar> {
                                                 children: [
                                                   Text(
                                                     years[index],
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 17,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -852,7 +850,7 @@ class _AddcarState extends State<Addcar> {
                                                     ),
                                                   ),
                                                   yearindex == index
-                                                      ? Icon(
+                                                      ? const Icon(
                                                           Icons.check,
                                                           color: Global.primary,
                                                           size: 17,
@@ -860,7 +858,7 @@ class _AddcarState extends State<Addcar> {
                                                       : Container()
                                                 ],
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 20,
                                               ),
                                               index == years.length - 1
@@ -869,7 +867,7 @@ class _AddcarState extends State<Addcar> {
                                                       color:
                                                           Colors.grey.shade700,
                                                     ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 20,
                                               ),
                                               index == years.length - 1
@@ -895,10 +893,10 @@ class _AddcarState extends State<Addcar> {
                     _curentstep == 3
                         ? Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
-                              Container(
+                              SizedBox(
                                 height: 50,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
@@ -914,21 +912,21 @@ class _AddcarState extends State<Addcar> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                           borderSide:
-                                              BorderSide(color: Colors.white)),
+                                              const BorderSide(color: Colors.white)),
                                       focusedBorder: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(12),
                                           borderSide:
-                                              BorderSide(color: Colors.white)),
+                                              const BorderSide(color: Colors.white)),
                                       filled: true,
-                                      fillColor: Color(0x44eeeeee),
+                                      fillColor: const Color(0x44eeeeee),
                                       hintText: "Search",
-                                      prefixIcon: Icon(
+                                      prefixIcon: const Icon(
                                         Icons.search_rounded,
                                         color: Colors.black,
                                         size: 20,
                                       ),
-                                      hintStyle: TextStyle(
+                                      hintStyle: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w600,
@@ -942,7 +940,7 @@ class _AddcarState extends State<Addcar> {
                                 height:
                                     MediaQuery.of(context).size.height * 0.035,
                               ),
-                              Container(
+                              SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.68,
                                 child: FadingScroller(
@@ -960,7 +958,7 @@ class _AddcarState extends State<Addcar> {
                                         overlayColor: MaterialStateProperty.all(
                                             Colors.transparent),
                                         child: Padding(
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 17),
                                           child: Column(
                                             children: [
@@ -971,7 +969,7 @@ class _AddcarState extends State<Addcar> {
                                                 children: [
                                                   Text(
                                                     colors[index],
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontSize: 17,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -982,7 +980,7 @@ class _AddcarState extends State<Addcar> {
                                                     ),
                                                   ),
                                                   colorindex == index
-                                                      ? Icon(
+                                                      ? const Icon(
                                                           Icons.check,
                                                           color: Global.primary,
                                                           size: 17,
@@ -990,7 +988,7 @@ class _AddcarState extends State<Addcar> {
                                                       : Container()
                                                 ],
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 20,
                                               ),
                                               index == colors.length - 1
@@ -999,7 +997,7 @@ class _AddcarState extends State<Addcar> {
                                                       color:
                                                           Colors.grey.shade700,
                                                     ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 height: 20,
                                               ),
                                               index == colors.length - 1
@@ -1025,10 +1023,10 @@ class _AddcarState extends State<Addcar> {
                     _curentstep == 4
                         ? Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
-                              Container(
+                              SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.773,
                                 child: FadingScroller(
@@ -1072,9 +1070,9 @@ class _AddcarState extends State<Addcar> {
                                               0.22,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(15),
-                                        color: Color(0xff191919),
+                                        color: const Color(0xff191919),
                                       ),
-                                      child: Row(
+                                      child: const Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
@@ -1110,7 +1108,7 @@ class _AddcarState extends State<Addcar> {
                                           MediaQuery.of(context).size.height *
                                               0.05,
                                     ),
-                                    Container(
+                                    SizedBox(
                                       height: uploadphotos.length == 1
                                           ? MediaQuery.of(context).size.height *
                                               0.14
@@ -1131,7 +1129,7 @@ class _AddcarState extends State<Addcar> {
                                         },
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                     ),
                                     Padding(
@@ -1156,7 +1154,7 @@ class _AddcarState extends State<Addcar> {
                                                 BorderRadius.circular(12),
                                             color: Global.primary,
                                           ),
-                                          child: Center(
+                                          child: const Center(
                                             child: Icon(
                                               Icons.add,
                                               color: Colors.white,
@@ -1172,10 +1170,10 @@ class _AddcarState extends State<Addcar> {
                     _curentstep == 6
                         ? Column(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
-                              Text(
+                              const Text(
                                 "Choose The Rent Per Day",
                                 style: TextStyle(
                                   fontSize: 17,
@@ -1184,7 +1182,7 @@ class _AddcarState extends State<Addcar> {
                                   fontFamilyFallback: ["Regular"],
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 35,
                               ),
                               Container(
@@ -1192,25 +1190,25 @@ class _AddcarState extends State<Addcar> {
                                 width: MediaQuery.of(context).size.width * 0.9,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
-                                  color: Color(0x44eeeeee),
+                                  color: const Color(0x44eeeeee),
                                 ),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       width: MediaQuery.of(context).size.width *
                                           0.16,
                                       child: TextFormField(
                                         cursorColor: Global.primary,
                                         controller: _price,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600,
                                         ),
                                         textAlign: TextAlign.center,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           hintText: "Your Price",
                                           hintStyle: TextStyle(
                                             color: Colors.black,
@@ -1222,7 +1220,7 @@ class _AddcarState extends State<Addcar> {
                                         keyboardType: TextInputType.number,
                                       ),
                                     ),
-                                    Text(
+                                    const Text(
                                       "AED",
                                       style: TextStyle(
                                         color: Colors.black,
@@ -1236,7 +1234,7 @@ class _AddcarState extends State<Addcar> {
                             ],
                           )
                         : Container(),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                   ],
@@ -1258,18 +1256,18 @@ class _AddcarState extends State<Addcar> {
                                 if (_price.text.isNotEmpty) {
                                   FocusManager.instance.primaryFocus?.unfocus();
                                   b = true;
-                                  Timer(Duration(milliseconds: 800), () {
+                                  Timer(const Duration(milliseconds: 800), () {
                                     Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (_) => Mynavbar()));
+                                            builder: (_) => const Mynavbar()));
                                   });
                                 } else {
                                   showTopSnackBar(
                                       displayDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       context,
-                                      CustomSnackBar.error(
+                                      const CustomSnackBar.error(
                                           message: "The Price is required"));
                                 }
                               });
@@ -1280,7 +1278,7 @@ class _AddcarState extends State<Addcar> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(13),
                                   color: Global.primary),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
                                   "SAVE",
                                   style: TextStyle(
@@ -1306,9 +1304,9 @@ class _AddcarState extends State<Addcar> {
                                 } else {
                                   showTopSnackBar(
                                       displayDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       context,
-                                      CustomSnackBar.error(
+                                      const CustomSnackBar.error(
                                           message:
                                               "Choose at least one type of cars!"));
                                 }
@@ -1323,9 +1321,9 @@ class _AddcarState extends State<Addcar> {
                                 } else {
                                   showTopSnackBar(
                                       displayDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       context,
-                                      CustomSnackBar.error(
+                                      const CustomSnackBar.error(
                                           message:
                                               "Choose at least one type!"));
                                 }
@@ -1340,9 +1338,9 @@ class _AddcarState extends State<Addcar> {
                                 } else {
                                   showTopSnackBar(
                                       displayDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       context,
-                                      CustomSnackBar.error(
+                                      const CustomSnackBar.error(
                                           message:
                                               "Choose the year of car you want!"));
                                 }
@@ -1357,9 +1355,9 @@ class _AddcarState extends State<Addcar> {
                                 } else {
                                   showTopSnackBar(
                                       displayDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       context,
-                                      CustomSnackBar.error(
+                                      const CustomSnackBar.error(
                                           message:
                                               "Choose the color of car you want!"));
                                 }
@@ -1374,9 +1372,9 @@ class _AddcarState extends State<Addcar> {
                                 } else {
                                   showTopSnackBar(
                                       displayDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       context,
-                                      CustomSnackBar.error(
+                                      const CustomSnackBar.error(
                                           message: "The City is required!"));
                                 }
                               } else if (_curentstep == 5) {
@@ -1390,9 +1388,9 @@ class _AddcarState extends State<Addcar> {
                                 } else {
                                   showTopSnackBar(
                                       displayDuration:
-                                          Duration(milliseconds: 500),
+                                          const Duration(milliseconds: 500),
                                       context,
-                                      CustomSnackBar.error(
+                                      const CustomSnackBar.error(
                                           message:
                                               "You have to add three photos at least!"));
                                 }
@@ -1404,7 +1402,7 @@ class _AddcarState extends State<Addcar> {
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(13),
                                   color: Global.primary),
-                              child: Center(
+                              child: const Center(
                                 child: Text(
                                   "Next",
                                   style: TextStyle(
@@ -1423,9 +1421,10 @@ class _AddcarState extends State<Addcar> {
             ),
             b == true
                 ? Container(
+                    color: Colors.black.withOpacity(0.9),
                     child: Stack(
                       children: [
-                        Center(
+                        const Center(
                           child: Text(
                             "Saving Your Car Information",
                             style: TextStyle(
@@ -1447,7 +1446,7 @@ class _AddcarState extends State<Addcar> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(28),
                                     color: Global.primary),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.sell,
                                     color: Colors.white,
@@ -1466,7 +1465,7 @@ class _AddcarState extends State<Addcar> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(28),
                                     color: Global.primary),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.videocam,
                                     color: Colors.white,
@@ -1485,7 +1484,7 @@ class _AddcarState extends State<Addcar> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(28),
                                     color: Global.primary),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.paid,
                                     color: Colors.white,
@@ -1504,7 +1503,7 @@ class _AddcarState extends State<Addcar> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(28),
                                     color: Global.primary),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.eco,
                                     color: Colors.white,
@@ -1523,7 +1522,7 @@ class _AddcarState extends State<Addcar> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(28),
                                     color: Global.primary),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.shopping_bag_rounded,
                                     color: Colors.white,
@@ -1542,7 +1541,7 @@ class _AddcarState extends State<Addcar> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(28),
                                     color: Global.primary),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.location_pin,
                                     color: Colors.white,
@@ -1561,7 +1560,7 @@ class _AddcarState extends State<Addcar> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(28),
                                     color: Global.primary),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.crop_original_rounded,
                                     color: Colors.white,
@@ -1580,7 +1579,7 @@ class _AddcarState extends State<Addcar> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(28),
                                     color: Global.primary),
-                                child: Center(
+                                child: const Center(
                                   child: Icon(
                                     Icons.time_to_leave_rounded,
                                     color: Colors.white,
@@ -1591,7 +1590,6 @@ class _AddcarState extends State<Addcar> {
                             )),
                       ],
                     ),
-                    color: Colors.black.withOpacity(0.9),
                   )
                 : Container(),
           ],
@@ -1616,13 +1614,13 @@ class _AddcarState extends State<Addcar> {
     return Container(
       height: 100,
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         horizontal: 20,
         vertical: 20,
       ),
       child: Column(
         children: [
-          Text(
+          const Text(
             "Choose a Photot",
             style: TextStyle(
                 fontSize: 16,
@@ -1631,7 +1629,7 @@ class _AddcarState extends State<Addcar> {
                 fontFamilyFallback: ["Regular"],
                 color: Colors.black),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           Row(
@@ -1643,7 +1641,7 @@ class _AddcarState extends State<Addcar> {
                   takephoto(ImageSource.camera);
                   Navigator.of(context).pop();
                 },
-                child: Column(
+                child: const Column(
                   children: [
                     Icon(
                       Icons.camera,
@@ -1669,7 +1667,7 @@ class _AddcarState extends State<Addcar> {
                   takephoto(ImageSource.gallery);
                   Navigator.of(context).pop();
                 },
-                child: Column(
+                child: const Column(
                   children: [
                     Icon(
                       Icons.image,

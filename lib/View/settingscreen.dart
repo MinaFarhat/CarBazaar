@@ -1,9 +1,7 @@
-import 'package:car/View/addcar.dart';
-import 'package:car/View/stt.dart';
-import 'package:car/const/global.dart';
+import 'package:carbazaar/View/addcar.dart';
+import 'package:carbazaar/View/stt.dart';
+import 'package:carbazaar/const/global.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 class Settingscreen extends StatefulWidget {
   const Settingscreen({Key? key}) : super(key: key);
 
@@ -23,7 +21,7 @@ class _SettingscreenState extends State<Settingscreen> {
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height * 0.3,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/logo.png"),
                     fit: BoxFit.cover,
@@ -31,13 +29,13 @@ class _SettingscreenState extends State<Settingscreen> {
                 ),
               ),
               InkWell(
-                overlayColor:MaterialStateProperty.all(Colors.transparent),
+                overlayColor:WidgetStateProperty.all(Colors.transparent),
                 onTap: (){
                   Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                    return Addcar();
+                    return const Addcar();
                   }));
                 },
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -56,24 +54,24 @@ class _SettingscreenState extends State<Settingscreen> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Divider(
                 color: Colors.grey.shade800,
                 thickness: 1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               InkWell(
-                overlayColor:MaterialStateProperty.all(Colors.transparent),
+                overlayColor:WidgetStateProperty.all(Colors.transparent),
                 onTap: (){
                   Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                    return Stt();
+                    return const Stt();
                   }));
                 },
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -92,17 +90,17 @@ class _SettingscreenState extends State<Settingscreen> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Divider(
                 color: Colors.grey.shade800,
                 thickness: 1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              InkWell(
+              const InkWell(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -122,17 +120,17 @@ class _SettingscreenState extends State<Settingscreen> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Divider(
                 color: Colors.grey.shade800,
                 thickness: 1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              InkWell(
+              const InkWell(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -165,17 +163,17 @@ class _SettingscreenState extends State<Settingscreen> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Divider(
                 color: Colors.grey.shade800,
                 thickness: 1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              InkWell(
+              const InkWell(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -195,17 +193,17 @@ class _SettingscreenState extends State<Settingscreen> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               Divider(
                 color: Colors.grey.shade800,
                 thickness: 1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              InkWell(
+              const InkWell(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -235,7 +233,7 @@ class _SettingscreenState extends State<Settingscreen> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(13),
                       color: Global.primary),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "SIGN OUT",
                       style: TextStyle(
@@ -248,10 +246,10 @@ class _SettingscreenState extends State<Settingscreen> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Center(
+              const Center(
                 child: Text(
                   "Version 7.9.0",
                   style: TextStyle(

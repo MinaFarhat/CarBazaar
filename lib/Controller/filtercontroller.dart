@@ -1,4 +1,6 @@
-import 'package:car/api/api.dart';
+// ignore_for_file: non_constant_identifier_names, avoid_print
+
+import 'package:carbazaar/api/api.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +11,6 @@ class Filtercontroller extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     try {
       loading = true;

@@ -1,5 +1,4 @@
-import 'package:car/const/save.dart';
-import 'package:car/const/shp.dart';
+import 'package:carbazaar/const/save.dart';
 import 'package:flutter/material.dart';
 
 class Global{

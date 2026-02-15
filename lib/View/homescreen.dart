@@ -1,8 +1,8 @@
-import 'package:car/Controller/filtercontroller.dart';
-import 'package:car/View/postscreen.dart';
-import 'package:car/api/api.dart';
+// ignore_for_file: deprecated_member_use, non_constant_identifier_names
+
+import 'package:carbazaar/Controller/filtercontroller.dart';
+import 'package:carbazaar/View/postscreen.dart';
 import 'package:flutter/material.dart';
-import '../Models/filtter_result.dart';
 import '../const/global.dart';
 import 'package:get/get.dart';
 
@@ -65,13 +65,13 @@ class _HomescreenState extends State<Homescreen> {
     return SafeArea(
       child: Scaffold(
         body: GetBuilder<Filtercontroller>(
-          builder: (controller) => Container(
+          builder: (controller) => SizedBox(
             height: MediaQuery.of(context).size.height,
             child: controller.loading == true
-                ? Container(
+                ? SizedBox(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
-                    child: Center(
+                    child: const Center(
                       child: CircularProgressIndicator(),
                     ),
                   )
@@ -83,10 +83,10 @@ class _HomescreenState extends State<Homescreen> {
                           SingleChildScrollView(
                             child: Column(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 35,
                                 ),
-                                Container(
+                                SizedBox(
                                   height:
                                       MediaQuery.of(context).size.height - 130,
                                   child: ListView.builder(
@@ -107,7 +107,7 @@ class _HomescreenState extends State<Homescreen> {
                                             controller.res[index].model,
                                             controller.res[index].year.toString(),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 15,
                                           ),
                                           index == (controller.res.length - 1)
@@ -143,7 +143,7 @@ class _HomescreenState extends State<Homescreen> {
                                   children: [
                                     Container(
                                       width: MediaQuery.of(context).size.width,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Colors.white,
                                       ),
                                       child: Column(
@@ -154,538 +154,34 @@ class _HomescreenState extends State<Homescreen> {
                                                     .height *
                                                 0.075,
                                           ),
-                                          Container(
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 15),
-                                              child: Column(
-                                                children: [
-                                                  InkWell(
-                                                    overlayColor:
-                                                        MaterialStateProperty
-                                                            .all(Colors
-                                                                .transparent),
-                                                    onTap: () {
-                                                      if (controller.down_up ==
-                                                          false) {
-                                                        controller
-                                                            .getdown_up(true);
-                                                      } else {
-                                                        controller
-                                                            .getdown_up(false);
-                                                      }
-                                                    },
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Text(
-                                                          "Year",
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            fontFamily:
-                                                                "OpenSans",
-                                                            fontFamilyFallback: [
-                                                              "Bold"
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        controller.down_up ==
-                                                                false
-                                                            ? Icon(
-                                                                Icons
-                                                                    .keyboard_arrow_down_rounded,
-                                                                size: 20,
-                                                              )
-                                                            : Icon(
-                                                                Icons
-                                                                    .keyboard_arrow_up_rounded,
-                                                                size: 20,
-                                                              )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  controller.down_up == true
-                                                      ? Container(
-                                                          height: 30,
-                                                          child:
-                                                              ListView.builder(
-                                                            shrinkWrap: true,
-                                                            itemCount:
-                                                                year.length,
-                                                            scrollDirection:
-                                                                Axis.horizontal,
-                                                            itemBuilder:
-                                                                (context,
-                                                                    index) {
-                                                              return InkWell(
-                                                                overlayColor:
-                                                                    MaterialStateProperty
-                                                                        .all(Colors
-                                                                            .transparent),
-                                                                onTap: () {
-                                                                  controller
-                                                                      .getyear(
-                                                                          index);
-                                                                },
-                                                                child: Padding(
-                                                                    padding: const EdgeInsets
-                                                                            .symmetric(
-                                                                        horizontal:
-                                                                            8),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Container(
-                                                                          width:
-                                                                              60,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color: controller.year == index
-                                                                                ? Global.primary
-                                                                                : Colors.white,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(10),
-                                                                            border:
-                                                                                Border.all(
-                                                                              color: controller.year != index ? Colors.black : Colors.white,
-                                                                            ),
-                                                                          ),
-                                                                          child:
-                                                                              Center(
-                                                                            child:
-                                                                                Text(
-                                                                              year[index],
-                                                                              style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    )),
-                                                              );
-                                                            },
-                                                          ),
-                                                        )
-                                                      : Container(),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 25,
-                                          ),
-                                          Container(
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 15),
-                                              child: Column(
-                                                children: [
-                                                  InkWell(
-                                                    overlayColor:
-                                                        MaterialStateProperty
-                                                            .all(Colors
-                                                                .transparent),
-                                                    onTap: () {
-                                                      if (controller.loading ==
-                                                          false) {
-                                                        controller
-                                                            .getdown_up1(true);
-                                                      } else {
-                                                        controller
-                                                            .getdown_up1(false);
-                                                      }
-                                                    },
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Text(
-                                                          "Brand",
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            fontFamily:
-                                                                "OpenSans",
-                                                            fontFamilyFallback: [
-                                                              "Bold"
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        controller.down_up1 ==
-                                                                false
-                                                            ? Icon(
-                                                                Icons
-                                                                    .keyboard_arrow_down_rounded,
-                                                                size: 20,
-                                                              )
-                                                            : Icon(
-                                                                Icons
-                                                                    .keyboard_arrow_up_rounded,
-                                                                size: 20,
-                                                              )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  controller.down_up1 == true
-                                                      ? Container(
-                                                          height: 30,
-                                                          child:
-                                                              ListView.builder(
-                                                            shrinkWrap: true,
-                                                            itemCount:
-                                                                Brand.length,
-                                                            scrollDirection:
-                                                                Axis.horizontal,
-                                                            itemBuilder:
-                                                                (context,
-                                                                    index) {
-                                                              return InkWell(
-                                                                overlayColor:
-                                                                    MaterialStateProperty
-                                                                        .all(Colors
-                                                                            .transparent),
-                                                                onTap: () {
-                                                                  controller
-                                                                      .getbrand(
-                                                                          index);
-                                                                },
-                                                                child: Padding(
-                                                                    padding: const EdgeInsets
-                                                                            .symmetric(
-                                                                        horizontal:
-                                                                            8),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Container(
-                                                                          //width: 60,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color: controller.brand == index
-                                                                                ? Global.primary
-                                                                                : Colors.white,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(10),
-                                                                            border:
-                                                                                Border.all(
-                                                                              color: controller.brand != index ? Colors.black : Colors.white,
-                                                                            ),
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                const EdgeInsets.symmetric(horizontal: 12),
-                                                                            child:
-                                                                                Center(
-                                                                              child: Text(
-                                                                                Brand[index],
-                                                                                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    )),
-                                                              );
-                                                            },
-                                                          ),
-                                                        )
-                                                      : Container(),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 25,
-                                          ),
-                                          Container(
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 15),
-                                              child: Column(
-                                                children: [
-                                                  InkWell(
-                                                    overlayColor:
-                                                        MaterialStateProperty
-                                                            .all(Colors
-                                                                .transparent),
-                                                    onTap: () {
-                                                      if (controller.down_up2 ==
-                                                          false) {
-                                                        controller
-                                                            .getdown_up2(true);
-                                                      } else {
-                                                        controller
-                                                            .getdown_up2(false);
-                                                      }
-                                                    },
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Text(
-                                                          "Car Model",
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            fontFamily:
-                                                                "OpenSans",
-                                                            fontFamilyFallback: [
-                                                              "Bold"
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        controller.down_up2 ==
-                                                                false
-                                                            ? Icon(
-                                                                Icons
-                                                                    .keyboard_arrow_down_rounded,
-                                                                size: 20,
-                                                              )
-                                                            : Icon(
-                                                                Icons
-                                                                    .keyboard_arrow_up_rounded,
-                                                                size: 20,
-                                                              )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  controller.down_up2 == true
-                                                      ? Container(
-                                                          height: 30,
-                                                          child:
-                                                              ListView.builder(
-                                                            shrinkWrap: true,
-                                                            itemCount:
-                                                                carmodel.length,
-                                                            scrollDirection:
-                                                                Axis.horizontal,
-                                                            itemBuilder:
-                                                                (context,
-                                                                    index) {
-                                                              return InkWell(
-                                                                overlayColor:
-                                                                    MaterialStateProperty
-                                                                        .all(Colors
-                                                                            .transparent),
-                                                                onTap: () {
-                                                                  controller
-                                                                      .getcarmodel(
-                                                                          index);
-                                                                },
-                                                                child: Padding(
-                                                                    padding: const EdgeInsets
-                                                                            .symmetric(
-                                                                        horizontal:
-                                                                            8),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Container(
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color: controller.carmodel == index
-                                                                                ? Global.primary
-                                                                                : Colors.white,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(10),
-                                                                            border:
-                                                                                Border.all(
-                                                                              color: controller.carmodel != index ? Colors.black : Colors.white,
-                                                                            ),
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                const EdgeInsets.symmetric(horizontal: 12),
-                                                                            child:
-                                                                                Center(
-                                                                              child: Text(
-                                                                                carmodel[index],
-                                                                                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    )),
-                                                              );
-                                                            },
-                                                          ),
-                                                        )
-                                                      : Container(),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 25,
-                                          ),
-                                          Container(
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 15),
-                                              child: Column(
-                                                children: [
-                                                  InkWell(
-                                                    overlayColor:
-                                                        MaterialStateProperty
-                                                            .all(Colors
-                                                                .transparent),
-                                                    onTap: () {
-                                                      if (controller.down_up3 ==
-                                                          false) {
-                                                        controller
-                                                            .getdown_up3(true);
-                                                      } else {
-                                                        controller
-                                                            .getdown_up3(false);
-                                                      }
-                                                    },
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Text(
-                                                          "Color",
-                                                          style: TextStyle(
-                                                            color: Colors.black,
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            fontFamily:
-                                                                "OpenSans",
-                                                            fontFamilyFallback: [
-                                                              "Bold"
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        controller.down_up3 ==
-                                                                false
-                                                            ? Icon(
-                                                                Icons
-                                                                    .keyboard_arrow_down_rounded,
-                                                                size: 20,
-                                                              )
-                                                            : Icon(
-                                                                Icons
-                                                                    .keyboard_arrow_up_rounded,
-                                                                size: 20,
-                                                              )
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  controller.down_up3 == true
-                                                      ? Container(
-                                                          height: 30,
-                                                          child:
-                                                              ListView.builder(
-                                                            shrinkWrap: true,
-                                                            itemCount:
-                                                                color.length,
-                                                            scrollDirection:
-                                                                Axis.horizontal,
-                                                            itemBuilder:
-                                                                (context,
-                                                                    index) {
-                                                              return InkWell(
-                                                                overlayColor:
-                                                                    MaterialStateProperty
-                                                                        .all(Colors
-                                                                            .transparent),
-                                                                onTap: () {
-                                                                  controller
-                                                                      .getcolor(
-                                                                          index);
-                                                                },
-                                                                child: Padding(
-                                                                    padding: const EdgeInsets
-                                                                            .symmetric(
-                                                                        horizontal:
-                                                                            8),
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Container(
-                                                                          //width: 60,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color: controller.color == index
-                                                                                ? Global.primary
-                                                                                : Colors.white,
-                                                                            borderRadius:
-                                                                                BorderRadius.circular(10),
-                                                                            border:
-                                                                                Border.all(
-                                                                              color: controller.color != index ? Colors.black : Colors.white,
-                                                                            ),
-                                                                          ),
-                                                                          child:
-                                                                              Padding(
-                                                                            padding:
-                                                                                const EdgeInsets.symmetric(horizontal: 12),
-                                                                            child:
-                                                                                Center(
-                                                                              child: Text(
-                                                                                color[index],
-                                                                                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                                                                              ),
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    )),
-                                                              );
-                                                            },
-                                                          ),
-                                                        )
-                                                      : Container(),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 25,
-                                          ),
-                                          Container(
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.symmetric(
+                                                    horizontal: 15),
                                             child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
                                               children: [
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      horizontal: 15),
+                                                InkWell(
+                                                  overlayColor:
+                                                      MaterialStateProperty
+                                                          .all(Colors
+                                                              .transparent),
+                                                  onTap: () {
+                                                    if (controller.down_up ==
+                                                        false) {
+                                                      controller
+                                                          .getdown_up(true);
+                                                    } else {
+                                                      controller
+                                                          .getdown_up(false);
+                                                    }
+                                                  },
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
                                                             .spaceBetween,
                                                     children: [
-                                                      Text(
-                                                        "100 AED",
+                                                      const Text(
+                                                        "Year",
                                                         style: TextStyle(
                                                           color: Colors.black,
                                                           fontSize: 15,
@@ -698,53 +194,547 @@ class _HomescreenState extends State<Homescreen> {
                                                           ],
                                                         ),
                                                       ),
-                                                      Text(
-                                                        "3000 AED",
-                                                        style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 15,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          fontFamily:
-                                                              "OpenSans",
-                                                          fontFamilyFallback: [
-                                                            "Bold"
-                                                          ],
-                                                        ),
-                                                      ),
+                                                      controller.down_up ==
+                                                              false
+                                                          ? const Icon(
+                                                              Icons
+                                                                  .keyboard_arrow_down_rounded,
+                                                              size: 20,
+                                                            )
+                                                          : const Icon(
+                                                              Icons
+                                                                  .keyboard_arrow_up_rounded,
+                                                              size: 20,
+                                                            )
                                                     ],
                                                   ),
                                                 ),
-                                                SliderTheme(
-                                                  data: SliderThemeData(
-                                                    thumbColor: Global.primary,
-                                                    thumbShape:
-                                                        RoundSliderThumbShape(
-                                                      enabledThumbRadius: 15,
-                                                    ),
-                                                    activeTrackColor:
-                                                        Colors.grey.shade800,
-                                                    inactiveTrackColor:
-                                                        Colors.grey,
-                                                    trackHeight: 1,
-                                                  ),
-                                                  child: Slider(
-                                                    label:
-                                                        "${controller.currentRangeValues.round()}ADM",
-                                                    min: 100,
-                                                    max: 3000,
-                                                    divisions: 29,
-                                                    value: controller
-                                                        .currentRangeValues,
-                                                    onChanged: ((val) {
-                                                      controller.getrange(val);
-                                                    }),
-                                                  ),
+                                                const SizedBox(
+                                                  height: 10,
                                                 ),
+                                                controller.down_up == true
+                                                    ? SizedBox(
+                                                        height: 30,
+                                                        child:
+                                                            ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount:
+                                                              year.length,
+                                                          scrollDirection:
+                                                              Axis.horizontal,
+                                                          itemBuilder:
+                                                              (context,
+                                                                  index) {
+                                                            return InkWell(
+                                                              overlayColor:
+                                                                  MaterialStateProperty
+                                                                      .all(Colors
+                                                                          .transparent),
+                                                              onTap: () {
+                                                                controller
+                                                                    .getyear(
+                                                                        index);
+                                                              },
+                                                              child: Padding(
+                                                                  padding: const EdgeInsets
+                                                                          .symmetric(
+                                                                      horizontal:
+                                                                          8),
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Container(
+                                                                        width:
+                                                                            60,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color: controller.year == index
+                                                                              ? Global.primary
+                                                                              : Colors.white,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                          border:
+                                                                              Border.all(
+                                                                            color: controller.year != index ? Colors.black : Colors.white,
+                                                                          ),
+                                                                        ),
+                                                                        child:
+                                                                            Center(
+                                                                          child:
+                                                                              Text(
+                                                                            year[index],
+                                                                            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  )),
+                                                            );
+                                                          },
+                                                        ),
+                                                      )
+                                                    : Container(),
                                               ],
                                             ),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
+                                            height: 25,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.symmetric(
+                                                    horizontal: 15),
+                                            child: Column(
+                                              children: [
+                                                InkWell(
+                                                  overlayColor:
+                                                      MaterialStateProperty
+                                                          .all(Colors
+                                                              .transparent),
+                                                  onTap: () {
+                                                    if (controller.loading ==
+                                                        false) {
+                                                      controller
+                                                          .getdown_up1(true);
+                                                    } else {
+                                                      controller
+                                                          .getdown_up1(false);
+                                                    }
+                                                  },
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      const Text(
+                                                        "Brand",
+                                                        style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontFamily:
+                                                              "OpenSans",
+                                                          fontFamilyFallback: [
+                                                            "Bold"
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      controller.down_up1 ==
+                                                              false
+                                                          ? const Icon(
+                                                              Icons
+                                                                  .keyboard_arrow_down_rounded,
+                                                              size: 20,
+                                                            )
+                                                          : const Icon(
+                                                              Icons
+                                                                  .keyboard_arrow_up_rounded,
+                                                              size: 20,
+                                                            )
+                                                    ],
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+                                                controller.down_up1 == true
+                                                    ? SizedBox(
+                                                        height: 30,
+                                                        child:
+                                                            ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount:
+                                                              Brand.length,
+                                                          scrollDirection:
+                                                              Axis.horizontal,
+                                                          itemBuilder:
+                                                              (context,
+                                                                  index) {
+                                                            return InkWell(
+                                                              overlayColor:
+                                                                  MaterialStateProperty
+                                                                      .all(Colors
+                                                                          .transparent),
+                                                              onTap: () {
+                                                                controller
+                                                                    .getbrand(
+                                                                        index);
+                                                              },
+                                                              child: Padding(
+                                                                  padding: const EdgeInsets
+                                                                          .symmetric(
+                                                                      horizontal:
+                                                                          8),
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Container(
+                                                                        //width: 60,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color: controller.brand == index
+                                                                              ? Global.primary
+                                                                              : Colors.white,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                          border:
+                                                                              Border.all(
+                                                                            color: controller.brand != index ? Colors.black : Colors.white,
+                                                                          ),
+                                                                        ),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding:
+                                                                              const EdgeInsets.symmetric(horizontal: 12),
+                                                                          child:
+                                                                              Center(
+                                                                            child: Text(
+                                                                              Brand[index],
+                                                                              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  )),
+                                                            );
+                                                          },
+                                                        ),
+                                                      )
+                                                    : Container(),
+                                              ],
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 25,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.symmetric(
+                                                    horizontal: 15),
+                                            child: Column(
+                                              children: [
+                                                InkWell(
+                                                  overlayColor:
+                                                      MaterialStateProperty
+                                                          .all(Colors
+                                                              .transparent),
+                                                  onTap: () {
+                                                    if (controller.down_up2 ==
+                                                        false) {
+                                                      controller
+                                                          .getdown_up2(true);
+                                                    } else {
+                                                      controller
+                                                          .getdown_up2(false);
+                                                    }
+                                                  },
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      const Text(
+                                                        "Car Model",
+                                                        style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontFamily:
+                                                              "OpenSans",
+                                                          fontFamilyFallback: [
+                                                            "Bold"
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      controller.down_up2 ==
+                                                              false
+                                                          ? const Icon(
+                                                              Icons
+                                                                  .keyboard_arrow_down_rounded,
+                                                              size: 20,
+                                                            )
+                                                          : const Icon(
+                                                              Icons
+                                                                  .keyboard_arrow_up_rounded,
+                                                              size: 20,
+                                                            )
+                                                    ],
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+                                                controller.down_up2 == true
+                                                    ? SizedBox(
+                                                        height: 30,
+                                                        child:
+                                                            ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount:
+                                                              carmodel.length,
+                                                          scrollDirection:
+                                                              Axis.horizontal,
+                                                          itemBuilder:
+                                                              (context,
+                                                                  index) {
+                                                            return InkWell(
+                                                              overlayColor:
+                                                                  MaterialStateProperty
+                                                                      .all(Colors
+                                                                          .transparent),
+                                                              onTap: () {
+                                                                controller
+                                                                    .getcarmodel(
+                                                                        index);
+                                                              },
+                                                              child: Padding(
+                                                                  padding: const EdgeInsets
+                                                                          .symmetric(
+                                                                      horizontal:
+                                                                          8),
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Container(
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color: controller.carmodel == index
+                                                                              ? Global.primary
+                                                                              : Colors.white,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                          border:
+                                                                              Border.all(
+                                                                            color: controller.carmodel != index ? Colors.black : Colors.white,
+                                                                          ),
+                                                                        ),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding:
+                                                                              const EdgeInsets.symmetric(horizontal: 12),
+                                                                          child:
+                                                                              Center(
+                                                                            child: Text(
+                                                                              carmodel[index],
+                                                                              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  )),
+                                                            );
+                                                          },
+                                                        ),
+                                                      )
+                                                    : Container(),
+                                              ],
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 25,
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.symmetric(
+                                                    horizontal: 15),
+                                            child: Column(
+                                              children: [
+                                                InkWell(
+                                                  overlayColor:
+                                                      MaterialStateProperty
+                                                          .all(Colors
+                                                              .transparent),
+                                                  onTap: () {
+                                                    if (controller.down_up3 ==
+                                                        false) {
+                                                      controller
+                                                          .getdown_up3(true);
+                                                    } else {
+                                                      controller
+                                                          .getdown_up3(false);
+                                                    }
+                                                  },
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      const Text(
+                                                        "Color",
+                                                        style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 15,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontFamily:
+                                                              "OpenSans",
+                                                          fontFamilyFallback: [
+                                                            "Bold"
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      controller.down_up3 ==
+                                                              false
+                                                          ? const Icon(
+                                                              Icons
+                                                                  .keyboard_arrow_down_rounded,
+                                                              size: 20,
+                                                            )
+                                                          : const Icon(
+                                                              Icons
+                                                                  .keyboard_arrow_up_rounded,
+                                                              size: 20,
+                                                            )
+                                                    ],
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+                                                controller.down_up3 == true
+                                                    ? SizedBox(
+                                                        height: 30,
+                                                        child:
+                                                            ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount:
+                                                              color.length,
+                                                          scrollDirection:
+                                                              Axis.horizontal,
+                                                          itemBuilder:
+                                                              (context,
+                                                                  index) {
+                                                            return InkWell(
+                                                              overlayColor:
+                                                                  MaterialStateProperty
+                                                                      .all(Colors
+                                                                          .transparent),
+                                                              onTap: () {
+                                                                controller
+                                                                    .getcolor(
+                                                                        index);
+                                                              },
+                                                              child: Padding(
+                                                                  padding: const EdgeInsets
+                                                                          .symmetric(
+                                                                      horizontal:
+                                                                          8),
+                                                                  child: Row(
+                                                                    children: [
+                                                                      Container(
+                                                                        //width: 60,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color: controller.color == index
+                                                                              ? Global.primary
+                                                                              : Colors.white,
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(10),
+                                                                          border:
+                                                                              Border.all(
+                                                                            color: controller.color != index ? Colors.black : Colors.white,
+                                                                          ),
+                                                                        ),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding:
+                                                                              const EdgeInsets.symmetric(horizontal: 12),
+                                                                          child:
+                                                                              Center(
+                                                                            child: Text(
+                                                                              color[index],
+                                                                              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  )),
+                                                            );
+                                                          },
+                                                        ),
+                                                      )
+                                                    : Container(),
+                                              ],
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 25,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              const Padding(
+                                                padding: EdgeInsets
+                                                        .symmetric(
+                                                    horizontal: 15),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text(
+                                                      "100 AED",
+                                                      style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontFamily:
+                                                            "OpenSans",
+                                                        fontFamilyFallback: [
+                                                          "Bold"
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      "3000 AED",
+                                                      style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontFamily:
+                                                            "OpenSans",
+                                                        fontFamilyFallback: [
+                                                          "Bold"
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              SliderTheme(
+                                                data: SliderThemeData(
+                                                  thumbColor: Global.primary,
+                                                  thumbShape:
+                                                      const RoundSliderThumbShape(
+                                                    enabledThumbRadius: 15,
+                                                  ),
+                                                  activeTrackColor:
+                                                      Colors.grey.shade800,
+                                                  inactiveTrackColor:
+                                                      Colors.grey,
+                                                  trackHeight: 1,
+                                                ),
+                                                child: Slider(
+                                                  label:
+                                                      "${controller.currentRangeValues.round()}ADM",
+                                                  min: 100,
+                                                  max: 3000,
+                                                  divisions: 29,
+                                                  value: controller
+                                                      .currentRangeValues,
+                                                  onChanged: ((val) {
+                                                    controller.getrange(val);
+                                                  }),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(
                                             height: 15,
                                           ),
                                         ],
@@ -754,7 +744,7 @@ class _HomescreenState extends State<Homescreen> {
                                       width: MediaQuery.of(context).size.width,
                                       height: 55,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                               bottomLeft: Radius.circular(10),
                                               bottomRight: Radius.circular(10)),
                                           color: Colors.white,
@@ -764,7 +754,7 @@ class _HomescreenState extends State<Homescreen> {
                                                   Colors.grey.withOpacity(0.5),
                                               spreadRadius: 1,
                                               blurRadius: 6,
-                                              offset: Offset(0, -2.5),
+                                              offset: const Offset(0, -2.5),
                                             ),
                                           ]),
                                       child: Padding(
@@ -816,7 +806,7 @@ class _HomescreenState extends State<Homescreen> {
                                                       BorderRadius.circular(6),
                                                   color: Global.primary,
                                                 ),
-                                                child: Center(
+                                                child: const Center(
                                                   child: Text(
                                                     "Done",
                                                     style: TextStyle(
@@ -855,7 +845,7 @@ class _HomescreenState extends State<Homescreen> {
                                                     "DESC");
                                                 controller.res;
                                               },
-                                              child: Icon(
+                                              child: const Icon(
                                                 Icons.delete_outline_rounded,
                                                 size: 28,
                                               ),
@@ -923,7 +913,7 @@ class _HomescreenState extends State<Homescreen> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                             color: controller.v == 0
-                                                ? Color(0x44eeeeee)
+                                                ? const Color(0x44eeeeee)
                                                 : Colors.white),
                                         child: Center(
                                           child: Text(
@@ -935,13 +925,13 @@ class _HomescreenState extends State<Homescreen> {
                                               fontSize: 16,
                                               fontWeight: FontWeight.w600,
                                               fontFamily: "OpenSans",
-                                              fontFamilyFallback: ["Regular"],
+                                              fontFamilyFallback: const ["Regular"],
                                             ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 20,
                                     ),
                                     InkWell(
@@ -981,7 +971,7 @@ class _HomescreenState extends State<Homescreen> {
                                             borderRadius:
                                                 BorderRadius.circular(8),
                                             color: controller.v == 1
-                                                ? Color(0x44eeeeee)
+                                                ? const Color(0x44eeeeee)
                                                 : Colors.white),
                                         child: Center(
                                           child: Text(
@@ -993,7 +983,7 @@ class _HomescreenState extends State<Homescreen> {
                                               fontSize: 16,
                                               fontWeight: FontWeight.w600,
                                               fontFamily: "OpenSans",
-                                              fontFamilyFallback: ["Regular"],
+                                              fontFamilyFallback: const ["Regular"],
                                             ),
                                           ),
                                         ),
@@ -1008,7 +998,7 @@ class _HomescreenState extends State<Homescreen> {
                         width: MediaQuery.of(context).size.width,
                         height: 55,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                               bottomLeft: Radius.circular(10),
                               bottomRight: Radius.circular(10),
                             ),
@@ -1018,7 +1008,7 @@ class _HomescreenState extends State<Homescreen> {
                                 color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 1,
                                 blurRadius: 10,
-                                offset: Offset(0, 2),
+                                offset: const Offset(0, 2),
                               ),
                             ]),
                         child: Padding(
@@ -1026,7 +1016,7 @@ class _HomescreenState extends State<Homescreen> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              InkWell(
+                              const InkWell(
                                 child: Icon(
                                   Icons.arrow_back_ios_new_rounded,
                                   color: Colors.black,
@@ -1055,7 +1045,7 @@ class _HomescreenState extends State<Homescreen> {
                                               ? Global.primary
                                               : Colors.black,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         Text(
@@ -1071,7 +1061,7 @@ class _HomescreenState extends State<Homescreen> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 20,
                                   ),
                                   Container(
@@ -1079,7 +1069,7 @@ class _HomescreenState extends State<Homescreen> {
                                     height: 20,
                                     color: Colors.black,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 20,
                                   ),
                                   InkWell(
@@ -1102,7 +1092,7 @@ class _HomescreenState extends State<Homescreen> {
                                               ? Global.primary
                                               : Colors.black,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           width: 10,
                                         ),
                                         Text(
@@ -1120,7 +1110,7 @@ class _HomescreenState extends State<Homescreen> {
                                   ),
                                 ],
                               ),
-                              InkWell(
+                              const InkWell(
                                 child: Icon(
                                   Icons.dehaze_rounded,
                                   color: Colors.black,
